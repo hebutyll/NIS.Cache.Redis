@@ -8,7 +8,7 @@ namespace NIS.Cache.Redis
     public class RedisClient
     {
         private ConnectionMultiplexer redis = null;
-        private IDatabase db = null;
+        internal IDatabase db = null;
         internal RedisClient(ConnectionMultiplexer redis)
         {
             this.redis = redis;

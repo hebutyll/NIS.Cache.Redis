@@ -37,6 +37,20 @@ namespace NIS.Cache.Redis
             obj.Client = this;
             return obj;
         }
+
+        /// <summary>
+        /// 判断数据库中是否存在给定的键
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public bool ExistsLey(string key)
+        {
+            if (string.IsNullOrEmpty(key))
+            {
+                return false;
+            }
+            return this.db.KeyExists(key);
+        }
         #endregion
     }
 }

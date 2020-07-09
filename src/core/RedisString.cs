@@ -132,6 +132,103 @@ namespace NIS.Cache.Redis
             return this.Client.db.StringSet(list.ToArray());
         }
 
+        /// <summary>
+        /// 获取字符串值的长度
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public long GetLenght(string key)
+        {
+            return this.Client.db.StringLength(key);
+        }
+
+        /// <summary>
+        /// 获取字符串值指定索引范围上的内容
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="startIndex"></param>
+        /// <param name="endIndex"></param>
+        /// <returns></returns>
+        public string GetRange(string key, int startIndex, int endIndex)
+        {
+            return (string)this.Client.db.StringGetRange(key, startIndex, endIndex);
+        }
+
+        /// <summary>
+        /// 对字符串值的索引范围进行设置
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="startIndex"></param>
+        /// <param name="replace"></param>
+        public void SetRange(string key, int startIndex, string replace)
+        {
+            this.Client.db.StringSetRange(key, startIndex, replace);
+        }
+
+        /// <summary>
+        /// 追加新内容到值的末尾
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public long Append(string key, string value)
+        {
+            return this.Client.db.StringAppend(key, value);
+        }
+
+        /// <summary>
+        /// 对整数值执行加法操作
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="increment"></param>
+        /// <returns></returns>
+        public long Incr(string key, long increment)
+        {
+            return this.Client.db.StringIncrement(key, increment);
+        }
+
+        /// <summary>
+        /// 对整数执行加1操作
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public long Incr(string key)
+        {
+            return this.Incr(key, 1);
+        }
+
+        /// <summary>
+        /// 对整数执行减法操作
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="decrement"></param>
+        /// <returns></returns>
+        public long Decr(string key, long decrement)
+        {
+            return this.Incr(key, -decrement);
+        }
+
+        /// <summary>
+        /// 对整数执行减1操作
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public long Desr(string key)
+        {
+            return this.Decr(key, -1);
+        }
+
+        /// <summary>
+        /// 对数字执行浮点数加法运算
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="increment"></param>
+        /// <returns></returns>
+        public double IncyByFloat(string key, double increment)
+        {
+            return this.Client.db.StringIncrement(key, increment);
+        }
+
         #endregion
     }
 }

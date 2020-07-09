@@ -43,7 +43,7 @@ namespace NIS.Cache.Redis
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public bool ExistsLey(string key)
+        public bool ExistsKey(string key)
         {
             if (string.IsNullOrEmpty(key))
             {
